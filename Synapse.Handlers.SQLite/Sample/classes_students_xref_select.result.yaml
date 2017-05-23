@@ -1,0 +1,80 @@
+Name: SamplePlan
+Description: Example Config/Parameters
+Actions:
+- Name: Synapse.Handlers.SQLite:SQLiteHandler
+  Description: Select data into JSON result
+  Handler:
+    Type: SQLiteHandler, Synapse.Handlers.SQLite, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+    Config:
+      Values:
+        FileName: C:\Devo\synapse\handlers.net\handlers.SQLite.net\Synapse.Handlers.SQLite\Sample\sample.db
+    StartInfo:
+      Parameters: >+
+        Command: >
+
+          select * from ClassesStudentsXref X
+
+            inner join Classes C on X.ClassId = C.Id
+
+            Inner join Students S on X.StudentId = S.Id
+
+            where C.Id = 2
+
+  Result:
+    Status: Complete
+    ExitData: >-
+      [
+
+        {
+
+          "ClassId": 2,
+
+          "StudentId": 1,
+
+          "Id": 2,
+
+          "ClassName": "science",
+
+          "Id1": 1,
+
+          "StudentName": "joe"
+
+        },
+
+        {
+
+          "ClassId": 2,
+
+          "StudentId": 3,
+
+          "Id": 2,
+
+          "ClassName": "science",
+
+          "Id1": 3,
+
+          "StudentName": "steve"
+
+        }
+
+      ]
+    BranchStatus: Complete
+    Sequence: 2147483647
+  Parameters:
+    Values:
+      Command: >
+        select * from ClassesStudentsXref X
+          inner join Classes C on X.ClassId = C.Id
+          Inner join Students S on X.StudentId = S.Id
+          where C.Id = 2
+    Dynamic:
+    - Name: classid
+      Path: Command
+      Replace: ~classId~
+      Options: []
+  Actions: []
+StartInfo: {}
+Result:
+  Status: Complete
+  BranchStatus: Complete
+LastModified: 5/23/2017 11:29:43 AM

@@ -1,0 +1,47 @@
+Name: SamplePlan
+Description: Example Config/Parameters
+Actions:
+- Name: Synapse.Handlers.SQLite:SQLiteHandler
+  Description: Select data into JSON result
+  Handler:
+    Type: SQLiteHandler, Synapse.Handlers.SQLite, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+    Config:
+      Values:
+        FileName: C:\Devo\synapse\handlers.net\handlers.SQLite.net\Synapse.Handlers.SQLite\Sample\sample.db
+    StartInfo:
+      Parameters: >+
+        Command: select * from Classes
+
+  Result:
+    Status: Complete
+    ExitData: >-
+      [
+
+        {
+
+          "Id": 1,
+
+          "ClassName": "math"
+
+        },
+
+        {
+
+          "Id": 2,
+
+          "ClassName": "science"
+
+        }
+
+      ]
+    BranchStatus: Complete
+    Sequence: 2147483647
+  Parameters:
+    Values:
+      Command: select * from Classes
+  Actions: []
+StartInfo: {}
+Result:
+  Status: Complete
+  BranchStatus: Complete
+LastModified: 5/23/2017 11:30:03 AM

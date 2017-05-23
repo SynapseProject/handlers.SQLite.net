@@ -1,0 +1,13 @@
+Name: SamplePlan
+Description: Example Config/Parameters
+Actions:
+- Name: Synapse.Handlers.SQLite:SQLiteHandler
+  Description: Select data into JSON result
+  Handler:
+    Type: Synapse.Handlers.SQLite:SQLiteHandler
+    Config:
+      Values:
+        FileName: C:\Devo\synapse\handlers.net\handlers.SQLite.net\Synapse.Handlers.SQLite\Sample\sample.db
+  Parameters:
+    Values:
+      Command: select * from Classes

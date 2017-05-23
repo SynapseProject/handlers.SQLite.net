@@ -1,0 +1,30 @@
+Name: SamplePlan
+Description: Example Config/Parameters
+Actions:
+- Name: Synapse.Handlers.SQLite:SQLiteHandler
+  Description: Select data into JSON result
+  Handler:
+    Type: Synapse.Handlers.SQLite:SQLiteHandler
+    Config:
+      Values:
+        FileName: C:\Devo\synapse\handlers.net\handlers.SQLite.net\Synapse.Handlers.SQLite\Sample\sample.db
+  Parameters:
+    Values:
+      Command: >+
+        insert into ClassesStudentsXref
+          (
+              ClassId,
+              StudentId
+          )
+          values
+          (
+              ~classId~,
+              ~studentId~
+          )
+    Dynamic:
+    - Name: classid
+      Path: Command
+      Replace: ~classId~
+    - Name: studentid
+      Path: Command
+      Replace: ~studentId~
